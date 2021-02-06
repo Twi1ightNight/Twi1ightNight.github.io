@@ -23,12 +23,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="萌新区 杂项1hint直接给答案可还行 萌新区 杂项2没啥好讲的 记事本看也行 萌新区 杂项3信息就那么几个：97 10 01 15银行卡密码6位数 试几次就行了密码为 971015 萌新区 杂项4给的信息够多了 直接生成个字典暴力破解就行##萌新区 杂项5乍一看没什么头脑（这种情况也就刚拿到题目一分钟左右）很快就可以发现大写分布是不规律的 尤其是country的o是个0（数字）我们把大写的字母一">
+<meta name="description" content="CTFshow刷题合集之萌新杂项~ 萌新区 杂项1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CTFshow 萌新区杂项1-11">
 <meta property="og:url" content="http://example.com/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/index.html">
 <meta property="og:site_name" content="各种write up">
-<meta property="og:description" content="萌新区 杂项1hint直接给答案可还行 萌新区 杂项2没啥好讲的 记事本看也行 萌新区 杂项3信息就那么几个：97 10 01 15银行卡密码6位数 试几次就行了密码为 971015 萌新区 杂项4给的信息够多了 直接生成个字典暴力破解就行##萌新区 杂项5乍一看没什么头脑（这种情况也就刚拿到题目一分钟左右）很快就可以发现大写分布是不规律的 尤其是country的o是个0（数字）我们把大写的字母一">
+<meta property="og:description" content="CTFshow刷题合集之萌新杂项~ 萌新区 杂项1">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.1.png">
 <meta property="og:image" content="http://example.com/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.2.png">
@@ -57,7 +57,7 @@
 <meta property="og:image" content="http://example.com/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.5.png">
 <meta property="og:image" content="http://example.com/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.6.png">
 <meta property="article:published_time" content="2021-01-12T03:16:36.000Z">
-<meta property="article:modified_time" content="2021-02-06T03:59:59.379Z">
+<meta property="article:modified_time" content="2021-02-06T17:27:25.279Z">
 <meta property="article:author" content="暮色夜想Twi1ightNight">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
@@ -190,7 +190,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="66" src="//cdn.bootcss.com/canvas
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B91"><span class="nav-number">1.</span> <span class="nav-text">萌新区 杂项1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B92"><span class="nav-number">2.</span> <span class="nav-text">萌新区 杂项2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B93"><span class="nav-number">3.</span> <span class="nav-text">萌新区 杂项3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B94"><span class="nav-number">4.</span> <span class="nav-text">萌新区 杂项4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B96"><span class="nav-number">5.</span> <span class="nav-text">萌新区 杂项6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B97"><span class="nav-number">6.</span> <span class="nav-text">萌新区 杂项7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B98"><span class="nav-number">7.</span> <span class="nav-text">萌新区 杂项8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B99"><span class="nav-number">8.</span> <span class="nav-text">萌新区 杂项9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B910"><span class="nav-number">9.</span> <span class="nav-text">萌新区 杂项10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B911"><span class="nav-number">10.</span> <span class="nav-text">萌新区 杂项11</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B91"><span class="nav-number">1.</span> <span class="nav-text">萌新区 杂项1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B92"><span class="nav-number">2.</span> <span class="nav-text">萌新区 杂项2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B93"><span class="nav-number">3.</span> <span class="nav-text">萌新区 杂项3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B94"><span class="nav-number">4.</span> <span class="nav-text">萌新区 杂项4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B95"><span class="nav-number">5.</span> <span class="nav-text">萌新区 杂项5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B96"><span class="nav-number">6.</span> <span class="nav-text">萌新区 杂项6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B97"><span class="nav-number">7.</span> <span class="nav-text">萌新区 杂项7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B98"><span class="nav-number">8.</span> <span class="nav-text">萌新区 杂项8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B99"><span class="nav-number">9.</span> <span class="nav-text">萌新区 杂项9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B910"><span class="nav-number">10.</span> <span class="nav-text">萌新区 杂项10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E6%9D%82%E9%A1%B911"><span class="nav-number">11.</span> <span class="nav-text">萌新区 杂项11</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -206,7 +206,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="66" src="//cdn.bootcss.com/canvas
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -287,7 +287,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="66" src="//cdn.bootcss.com/canvas
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-02-06 11:59:59" itemprop="dateModified" datetime="2021-02-06T11:59:59+08:00">2021-02-06</time>
+        <time title="修改时间：2021-02-07 01:27:25" itemprop="dateModified" datetime="2021-02-07T01:27:25+08:00">2021-02-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -309,10 +309,14 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="66" src="//cdn.bootcss.com/canvas
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="萌新区-杂项1"><a href="#萌新区-杂项1" class="headerlink" title="萌新区 杂项1"></a>萌新区 杂项1</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.1.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.2.png"><br>hint直接给答案可还行</p>
+        <p>CTFshow刷题合集之萌新杂项~</p>
+<h2 id="萌新区-杂项1"><a href="#萌新区-杂项1" class="headerlink" title="萌新区 杂项1"></a>萌新区 杂项1</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.1.png"></p>
+<a id="more"></a>
+<p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.2.png"><br>hint直接给答案可还行</p>
 <h2 id="萌新区-杂项2"><a href="#萌新区-杂项2" class="headerlink" title="萌新区 杂项2"></a>萌新区 杂项2</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/2.1.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/2.2.png"><br>没啥好讲的 记事本看也行</p>
 <h2 id="萌新区-杂项3"><a href="#萌新区-杂项3" class="headerlink" title="萌新区 杂项3"></a>萌新区 杂项3</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/3.1.png"><br>信息就那么几个：97 10 01 15<br>银行卡密码6位数 试几次就行了<br>密码为 971015</p>
-<h2 id="萌新区-杂项4"><a href="#萌新区-杂项4" class="headerlink" title="萌新区 杂项4"></a>萌新区 杂项4</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/4.1.png"><br>给的信息够多了 直接生成个字典暴力破解就行<br>##萌新区 杂项5<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/5.1.png"><br>乍一看没什么头脑（这种情况也就刚拿到题目一分钟左右）<br>很快就可以发现大写分布是不规律的 尤其是country的o是个0（数字）<br>我们把大写的字母一个一个挑出来 就会发现是答案<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/5.2.png"><br>flag{ctfshownb} 没什么难度，抖机灵的题</p>
+<h2 id="萌新区-杂项4"><a href="#萌新区-杂项4" class="headerlink" title="萌新区 杂项4"></a>萌新区 杂项4</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/4.1.png"><br>给的信息够多了 直接生成个字典暴力破解就行</p>
+<h2 id="萌新区-杂项5"><a href="#萌新区-杂项5" class="headerlink" title="萌新区 杂项5"></a>萌新区 杂项5</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/5.1.png"><br>乍一看没什么头脑（这种情况也就刚拿到题目一分钟左右）<br>很快就可以发现大写分布是不规律的 尤其是country的o是个0（数字）<br>我们把大写的字母一个一个挑出来 就会发现是答案<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/5.2.png"><br>flag{ctfshownb} 没什么难度，抖机灵的题</p>
 <h2 id="萌新区-杂项6"><a href="#萌新区-杂项6" class="headerlink" title="萌新区 杂项6"></a>萌新区 杂项6</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.1.png"><br>很明了，考察的是伪加密<br>先查找50 4B 01 02<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.2.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.3.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.4.png"><br>改过之后即可解压成功<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.5.png"><br>PS:50 4B 03 04：这是头文件标记（0x04034b50）</p>
 <p>全局方式位标记的四个数字中只有第二个数字对其有影响，其它的不管为何值，都不影响它的加密属性！<br>第二个数字为奇数时 –&gt;加密<br>第二个数字为偶数时 –&gt;未加密</p>
 <p>伪加密<br>压缩源文件数据区的全局加密应当为00 00<br>且压缩源文件目录区的全局方式位标记应当为09 00</p>
@@ -349,6 +353,9 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="66" src="//cdn.bootcss.com/canvas
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/" rel="next" title="CTFshow萌新区密码+隐写">
+                  CTFshow萌新区密码+隐写 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
