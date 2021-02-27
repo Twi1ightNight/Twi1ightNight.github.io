@@ -99,4 +99,52 @@
         <tag>CTF</tag>
       </tags>
   </entry>
+  <entry>
+    <title>在win10搭建DVWA</title>
+    <url>/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>在Centos7上搭建LAMP</title>
+    <url>/2021/02/26/%E5%9C%A8Centos7%E4%B8%8A%E6%90%AD%E5%BB%BALAMP/</url>
+    <content><![CDATA[<p>##安装LANMP<br>其实一开始想按照《Web安全攻防》在kali上搭建的，但是书上给的操作过于简单，实际在用kali搭建的时候问题特别多。因此，我改用Centos7进行搭建。<br>之前在kali上搭建花了特别多的时间和精力但是还是差了一点。在Centos7上搭建非常顺利。</p>
+<blockquote>
+<p>安装的Centos7是默认分区，带有GUI的服务器→FTP服务器<br>首先是安装Lamp框架!–more–&gt;<br>Lamp框架采用Linux+apache+mysql/mariadb+php，在这里我选用mariadb数据库当作架构。<br>在确保Linux可以上网的前提下，基本按照命名走就行了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install wget -y    </span><br><span class="line">wget   https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;epel&#x2F;RPM-GPG-KEY-EPEL-7       #epel额外包的密钥     </span><br><span class="line">wget   https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;epel&#x2F;epel-release-latest-7.noarch.rpm    #epel额外包的yum的配置</span><br><span class="line">wget   https:&#x2F;&#x2F;rpms.remirepo.net&#x2F;RPM-GPG-KEY-remi   #remi包的密钥</span><br><span class="line">wget   https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;remi&#x2F;enterprise&#x2F;remi-release-7.rpm    #php的yum配置</span><br></pre></td></tr></table></figure>
+<p>导入密钥并安装yum的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm --import   RPM-GPG-KEY-EPEL-7    #导入epel额外包的密钥</span><br><span class="line">rpm --import   RPM-GPG-KEY-remi 	#导入remi包的密钥</span><br><span class="line">cd  &#x2F;etc&#x2F;pki&#x2F;rpm-gpg      #存放rpm包的gpg-key</span><br><span class="line">[root@node3 rpm-gpg]# ls -l #查看rpm包gpg-key,有没有存放进来 </span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm    #安装epel额外包的yum配置</span><br><span class="line">rpm -ivh remi-release-7.rpm                  #安装php的yum配置</span><br></pre></td></tr></table></figure>
+<p>安装升级php，作为依赖httpd都安装好了，apache(httpd)和php就安装好了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install php</span><br></pre></td></tr></table></figure>
+<p>安装mariadb数据库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install mariadb mariadb-server</span><br></pre></td></tr></table></figure>
+<p>开启mariadb和httpd,设置开机自动启动；执行脚本，设置mariadb数据库参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# systemctl start mariadb      #开启mariadb</span><br><span class="line">[root@localhost ~]# systemctl start  httpd       #开启httpd</span><br><span class="line">[root@localhost ~]# systemctl enable mariadb     #设置开机自动开启mariadb</span><br><span class="line">[root@localhost ~]# systemctl enable httpd       #设置开机自动开启httpd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation                #执行脚本</span><br></pre></td></tr></table></figure>
+<p>如果你是第一次进行这个设置，那么只需要按下Enter就可以进行下一步的设置。如果你之前进行过设置，则需要输入当前root用户的密码才可以进行下一步的操作。<br>接下来是几个设置<br>Set root password? [Y/n]   y<br>是否设置root用户的密码？</p>
+<p>Remove anonymous users? [Y/n]   y<br>是否删除匿名用户？</p>
+<p>Disallow root login remotely? [Y/n]   n<br>是否禁止root远程登录？</p>
+<p>Remove test database and access to it? [Y/n]  y<br>是否删除database数据库？</p>
+<p>Reload privilege tables now? [Y/n]   y<br>是否重新加载授权信息？</p>
+<p>到这里，mysql就安装完了</p>
+<p>编辑php网页信息显示</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# cd &#x2F;var&#x2F;www&#x2F;html&#x2F;   #切换到apache的目录</span><br><span class="line">[root@localhost html]# vi index.php     #编辑php显示信息内容</span><br><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>查看端口和进程id<br>mariadb端口是3306，httpd端口是80 </p>
+<p>接下来，将PHP和MySQL关联起来</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install php-mysql</span><br></pre></td></tr></table></figure>
+<p>安装常用的PHP模块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install php-gd php-ldap php-odbcphp-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel libjpeg*php-imap php-pear php-mcrypt php-bcmath php-mhash libmcrypt php-devel</span><br></pre></td></tr></table></figure>
+<p>重启apache服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart httpd.service</span><br></pre></td></tr></table></figure>
+<p>测试PHP安装是否成功：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line">vi info .php  </span><br><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>接下来，在浏览器打开网址就可以看到基本信息了<br><a href="http://localhost/phpinfo.php">http://localhost/phpinfo.php</a><br>127.0.0.1/phpinfo.php<br><img src="/2021/02/26/%E5%9C%A8Centos7%E4%B8%8A%E6%90%AD%E5%BB%BALAMP/1.0.png"></p>
+<blockquote>
+<p> 星辰大海，细雨尘埃</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Web安全学习记录</tag>
+      </tags>
+  </entry>
 </search>
