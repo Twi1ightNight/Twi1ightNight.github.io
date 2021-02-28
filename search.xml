@@ -107,9 +107,11 @@
 <p>测试PHP安装是否成功：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line">vi info .php  </span><br><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>接下来，在浏览器打开网址就可以看到基本信息了<br><a href="http://localhost/phpinfo.php">http://localhost/phpinfo.php</a><br>127.0.0.1/phpinfo.php<br><img src="/2021/02/26/%E5%9C%A8Centos7%E4%B8%8A%E6%90%AD%E5%BB%BALAMP/1.0.png"></p>
+<hr>
 <blockquote>
 <p> 星辰大海，细雨尘埃</p>
 </blockquote>
+<hr>
 ]]></content>
       <tags>
         <tag>Web安全学习记录</tag>
@@ -118,7 +120,7 @@
   <entry>
     <title>在win10搭建DVWA</title>
     <url>/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/</url>
-    <content><![CDATA[<h2 id="搭建DVWA漏洞环境"><a href="#搭建DVWA漏洞环境" class="headerlink" title="搭建DVWA漏洞环境"></a>搭建DVWA漏洞环境</h2><p>下载phpstudy或wamp，我用的是phpstudy2018（此处感谢我的一位同学，很早就给我点到这里了，十分感谢！）<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/1.0.png"><br>phpmyadmin数据库管理工具的用户名和密码默认都为root。登录之后，可以修改用户名和密码<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/1.0.png"><br>点击数据库，创建名为dvwa的数据库<br> <img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/1.0.png"><br>下载dvwa的zip包，解压放置到phpstudy的根目录下</p>
+    <content><![CDATA[<h2 id="搭建DVWA漏洞环境"><a href="#搭建DVWA漏洞环境" class="headerlink" title="搭建DVWA漏洞环境"></a>搭建DVWA漏洞环境</h2><p>下载phpstudy或wamp，我用的是phpstudy2018（此处感谢我的一位同学，很早就给我点到这里了，十分感谢！）<br>打开phpstudy，启动Apache和MySQL<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.1.png"><br>进入phpadmin<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.2.png"><br>phpmyadmin数据库管理工具的用户名和密码默认都为root<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.3png"><br>点击数据库，创建名为DVWA的数据库<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.4.png"><br>想查看的话可以通过phpstudy打开数据库存所对应的文件夹<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.5.png"><br>下载dvwa的zip包，解压放置到\phpStudy\PHPTutorial\WWW<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.6.png"><br>然后进入\PHPTutorial\WWW\DVWA-master\config  找到文件config.inc.php.dist<br>复制粘贴一份并将其名称改为config.inc.php【将.dist去掉即可】<br>进去修改配置，修改后如下：<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.65.png"><br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.7.png"><br>保存之后打开浏览器，地址栏输入127.0.0.1/DVWA-master/setup.php<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.8.png"><br>在这里需要看看Setup Check中是否有红色字体的Disabled<br>如果有，需要把问题解决才可以Create/reset database<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/2.9.png"><br>比如我这里就出问题了。PHP function allow_url_include:disabled<br>解决方法：先进入指定目录<br>选择自己版本的文件夹，我这里是php-5.4.45<br>打开后找到php.int并进行修改<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/3.0.png"><br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/3.1.png"><br>修改后如下：<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/3.2.png"><br>修改后在浏览器打开127.0.0.1/DVWA-master/setup.php<br>问题解决了<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/3.3.png"><br>点击Create/reset database会自动跳转到DVWA的登录界面<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/3.4.png"><br>默认用户名：admin  密码：password<br><img src="/2021/02/27/%E5%9C%A8win10%E6%90%AD%E5%BB%BADVWA/3.5.png"><br>登录成功，部署成功！<br>接下来，还有很长的路要走<br>加油</p>
 ]]></content>
       <tags>
         <tag>Web安全学习记录</tag>
@@ -146,9 +148,11 @@
 <h2 id="萌新区-萌新-隐写6"><a href="#萌新区-萌新-隐写6" class="headerlink" title="萌新区 萌新 隐写6"></a>萌新区 萌新 隐写6</h2><p>用audacity打开音频，发现左声道是摩斯电码<br>把右声道静音，音量提高然后导出来<br>找一个在线的摩斯电码音频解码的网站<br>然后上传就行了<br>不知道为啥我没解成功  好像我的声音还是太小了</p>
 <h2 id="萌新区-隐写1"><a href="#萌新区-隐写1" class="headerlink" title="萌新区 隐写1"></a>萌新区 隐写1</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.1.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.2.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.3.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.4.png"><br>懒得打字了 直接看图吧 懂得都懂</p>
 <h2 id="萌新区-隐写2"><a href="#萌新区-隐写2" class="headerlink" title="萌新区 隐写2"></a>萌新区 隐写2</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX2.10.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX2.3.png"><br>提示已经很明显了 我们直接走JPHS<br>然后打开看一下 flag就是这么的简单明了<br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX2.20.png"></p>
+<hr>
 <blockquote>
 <p>“我即辰星，我即黎明。”</p>
 </blockquote>
+<hr>
 ]]></content>
       <categories>
         <category>CTFshow刷题合集</category>
