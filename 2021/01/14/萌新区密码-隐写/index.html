@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="萌新区 密码1密文一看就是十六进制，先将十六进制转换为字符串结果如下所示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTFshow萌新区密码+隐写">
+<meta property="og:url" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/index.html">
+<meta property="og:site_name" content="各种write up">
+<meta property="og:description" content="萌新区 密码1密文一看就是十六进制，先将十六进制转换为字符串结果如下所示">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.1.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.2.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.3.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.4.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/2.1.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/3.1.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/3.2.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/3.3.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/4.1.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/4.2.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/4.3.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx2.1.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx2.2.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx3.1.jpg">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx4.2.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx4.3.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx4.4.jpg">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx5.1.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx5.2.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx5.3.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.1.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.2.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.3.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.4.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX2.10.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX2.3.png">
+<meta property="og:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX2.20.png">
+<meta property="article:published_time" content="2021-01-14T13:47:05.000Z">
+<meta property="article:modified_time" content="2021-02-28T16:34:20.869Z">
+<meta property="article:author" content="暮色夜想Twi1ightNight">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.1.png">
+
+
+<link rel="canonical" href="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>CTFshow萌新区密码+隐写 | 各种write up</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>  
+  
+<script type="text/javascript"
+color="0,0,0" opacity='0.4' zIndex="-2" count="66" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">各种write up</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E5%AF%86%E7%A0%811"><span class="nav-number">1.</span> <span class="nav-text">萌新区 密码1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E5%AF%86%E7%A0%812"><span class="nav-number">2.</span> <span class="nav-text">萌新区 密码2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E5%AF%86%E7%A0%813"><span class="nav-number">3.</span> <span class="nav-text">萌新区 密码3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E5%AF%86%E7%A0%81-4"><span class="nav-number">4.</span> <span class="nav-text">萌新区 密码#4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E8%90%8C%E6%96%B0-%E9%9A%90%E5%86%992"><span class="nav-number">5.</span> <span class="nav-text">萌新区 萌新 隐写2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E8%90%8C%E6%96%B0-%E9%9A%90%E5%86%993"><span class="nav-number">6.</span> <span class="nav-text">萌新区 萌新 隐写3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E8%90%8C%E6%96%B0-%E9%9A%90%E5%86%994"><span class="nav-number">7.</span> <span class="nav-text">萌新区 萌新 隐写4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E8%90%8C%E6%96%B0-%E9%9A%90%E5%86%995"><span class="nav-number">8.</span> <span class="nav-text">萌新区 萌新 隐写5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E8%90%8C%E6%96%B0-%E9%9A%90%E5%86%996"><span class="nav-number">9.</span> <span class="nav-text">萌新区 萌新 隐写6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E9%9A%90%E5%86%991"><span class="nav-number">10.</span> <span class="nav-text">萌新区 隐写1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%8C%E6%96%B0%E5%8C%BA-%E9%9A%90%E5%86%992"><span class="nav-number">11.</span> <span class="nav-text">萌新区 隐写2</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="暮色夜想Twi1ightNight"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">暮色夜想Twi1ightNight</p>
+  <div class="site-description" itemprop="description">对你表达的东西也好，鼓起勇气面对曾经的自己也罢。 寻觅着你的步伐，从未停下。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="暮色夜想Twi1ightNight">
+      <meta itemprop="description" content="对你表达的东西也好，鼓起勇气面对曾经的自己也罢。 寻觅着你的步伐，从未停下。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="各种write up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CTFshow萌新区密码+隐写
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-14 21:47:05" itemprop="dateCreated datePublished" datetime="2021-01-14T21:47:05+08:00">2021-01-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-01 00:34:20" itemprop="dateModified" datetime="2021-03-01T00:34:20+08:00">2021-03-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CTFshow%E5%88%B7%E9%A2%98%E5%90%88%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">CTFshow刷题合集</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="萌新区-密码1"><a href="#萌新区-密码1" class="headerlink" title="萌新区 密码1"></a>萌新区 密码1</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.1.png"><br>密文一看就是十六进制，先将十六进制转换为字符串<br>结果如下所示</p>
+<a id="more"></a>
+<p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.2.png"><br>这个【=】懂得都懂 我们直接上base64<br>这里有一点需要注意一下 并不是所有的后面带【=】的就一定是base64<br>当初base58的设计用意便是混淆base64<br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.3.png"><br>观察一下 加上给个提示格式是KEY{} 不难看出这个是栅栏密码<br>分成两部分然后一上一下竖着看即可 这里我们直接用在线工具了<br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.4.png"><br>先肉眼看一下，栏数是2<br>然后拆成两串<br>KYdf0a3ebd5c4dc160-<br>E{fb63ee0298b8f4d8}<br>然后竖过来读<br>工具赛高 ！！！<br>出答案这里让我自己看我会晕的QAQ</p>
+<h2 id="萌新区-密码2"><a href="#萌新区-密码2" class="headerlink" title="萌新区 密码2"></a>萌新区 密码2</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/2.1.png"><br>做题人也很累 低头看了看键盘<br>看看电脑键盘 就会发现这些字母包围的分别是f w y<br>flag为KEY{fwy}</p>
+<h2 id="萌新区-密码3"><a href="#萌新区-密码3" class="headerlink" title="萌新区 密码3"></a>萌新区 密码3</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/3.1.png"><br>摩斯密码 二话不说先转一下<br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/3.2.png"><br>解密出来的内容里有提示是培根密码<br>因此提取后面的md 将m换成A，d换成B<br>就是AABBABABAAABBBABABBAAAAAAABBABAABBA<br>然后在线工具了解一下</p>
+<blockquote>
+<p>每个英文字母都可以用AB来表示，而且都是5个A或B的组合</p>
+</blockquote>
+<p>题目共有35个AB 这也就说明解密出来的东西是7个英文字母组成的</p>
+<p>培根密码实际上就是一种替换密码，对应转换即可加密解密 。它的特殊之处在于：可以通过不明显的特征来隐藏密码信息，比如大小写、正斜体等，只要两个不同的属性，密码即可隐藏</p>
+<p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/3.3.png"></p>
+<h2 id="萌新区-密码-4"><a href="#萌新区-密码-4" class="headerlink" title="萌新区 密码#4"></a>萌新区 密码#4</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/4.1.png"><br>上来先base64伺候<br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/4.2.png"><br>【&lt;】是html的&lt;，有些base64解码能写成&lt;，有一些不能<br>有的base85能解出来粗糙的 有些就直接不给解出来 需注意格式<br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/4.3.png"></p>
+<h2 id="萌新区-萌新-隐写2"><a href="#萌新区-萌新-隐写2" class="headerlink" title="萌新区 萌新 隐写2"></a>萌新区 萌新 隐写2</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx2.1.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx2.2.png"><br>附件的压缩包需要密码<br>直接上破解工具<br>破解的时间比较长 闲来无事搜了一下这道题的wp  发现最早这道题是给的有提示的<br>天啊 不早说 等的好辛苦T T<br>Hint:文件的主人喜欢用生日做密码，而且还是个90后。<br>生日的话 我们可以做一个密码字典 这样会快一点 纯数字也好破解<br>密码为19981000 打开压缩包即可获取flag</p>
+<h2 id="萌新区-萌新-隐写3"><a href="#萌新区-萌新-隐写3" class="headerlink" title="萌新区 萌新 隐写3"></a>萌新区 萌新 隐写3</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx3.1.jpg"><br>flag就在图片上</p>
+<h2 id="萌新区-萌新-隐写4"><a href="#萌新区-萌新-隐写4" class="headerlink" title="萌新区 萌新 隐写4"></a>萌新区 萌新 隐写4</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx4.2.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx4.3.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx4.4.jpg"><br>Word设置显示隐藏文字即可 </p>
+<h2 id="萌新区-萌新-隐写5"><a href="#萌新区-萌新-隐写5" class="headerlink" title="萌新区 萌新 隐写5"></a>萌新区 萌新 隐写5</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx5.1.png"><br>中文转Unicode编码<br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx5.2.png"><br>然后16进制转字符<br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/yx5.3.png"><br>然后base32解码即可得出结果</p>
+<h2 id="萌新区-萌新-隐写6"><a href="#萌新区-萌新-隐写6" class="headerlink" title="萌新区 萌新 隐写6"></a>萌新区 萌新 隐写6</h2><p>用audacity打开音频，发现左声道是摩斯电码<br>把右声道静音，音量提高然后导出来<br>找一个在线的摩斯电码音频解码的网站<br>然后上传就行了<br>不知道为啥我没解成功  好像我的声音还是太小了</p>
+<h2 id="萌新区-隐写1"><a href="#萌新区-隐写1" class="headerlink" title="萌新区 隐写1"></a>萌新区 隐写1</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.1.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.2.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.3.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX1.4.png"><br>懒得打字了 直接看图吧 懂得都懂</p>
+<h2 id="萌新区-隐写2"><a href="#萌新区-隐写2" class="headerlink" title="萌新区 隐写2"></a>萌新区 隐写2</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX2.10.png"><br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX2.3.png"><br>提示已经很明显了 我们直接走JPHS<br>然后打开看一下 flag就是这么的简单明了<br><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/YX2.20.png"></p>
+<hr>
+<blockquote>
+<p>“我即辰星，我即黎明。”</p>
+</blockquote>
+<hr>
+
+    </div>
+
+    
+    
+    	
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-flag"></i> CTF</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/" rel="prev" title="CTFshow 萌新区杂项1-11">
+                  <i class="fa fa-chevron-left"></i> CTFshow 萌新区杂项1-11
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/26/%E5%9C%A8Centos7%E4%B8%8A%E6%90%AD%E5%BB%BALAMP/" rel="next" title="在Centos7上搭建LAMP">
+                  在Centos7上搭建LAMP <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暮色夜想Twi1ightNight</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">7k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">6 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div> 
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
