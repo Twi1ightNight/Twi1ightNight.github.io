@@ -34,40 +34,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CTFshow 萌新区杂项1-11</title>
-    <url>/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/</url>
-    <content><![CDATA[<p>CTFshow刷题合集之萌新杂项~</p>
-<h2 id="萌新区-杂项1"><a href="#萌新区-杂项1" class="headerlink" title="萌新区 杂项1"></a>萌新区 杂项1</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.1.png"></p>
-<a id="more"></a>
-<p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.2.png"><br>hint直接给答案可还行</p>
-<h2 id="萌新区-杂项2"><a href="#萌新区-杂项2" class="headerlink" title="萌新区 杂项2"></a>萌新区 杂项2</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/2.1.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/2.2.png"><br>没啥好讲的 记事本看也行</p>
-<h2 id="萌新区-杂项3"><a href="#萌新区-杂项3" class="headerlink" title="萌新区 杂项3"></a>萌新区 杂项3</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/3.1.png"><br>信息就那么几个：97 10 01 15<br>银行卡密码6位数 试几次就行了<br>密码为 971015</p>
-<h2 id="萌新区-杂项4"><a href="#萌新区-杂项4" class="headerlink" title="萌新区 杂项4"></a>萌新区 杂项4</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/4.1.png"><br>给的信息够多了 直接生成个字典暴力破解就行</p>
-<h2 id="萌新区-杂项5"><a href="#萌新区-杂项5" class="headerlink" title="萌新区 杂项5"></a>萌新区 杂项5</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/5.1.png"><br>乍一看没什么头脑（这种情况也就刚拿到题目一分钟左右）<br>很快就可以发现大写分布是不规律的 尤其是country的o是个0（数字）<br>我们把大写的字母一个一个挑出来 就会发现是答案<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/5.2.png"><br>flag{ctfshownb} 没什么难度，抖机灵的题</p>
-<h2 id="萌新区-杂项6"><a href="#萌新区-杂项6" class="headerlink" title="萌新区 杂项6"></a>萌新区 杂项6</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.1.png"><br>很明了，考察的是伪加密<br>先查找50 4B 01 02<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.2.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.3.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.4.png"><br>改过之后即可解压成功<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.5.png"><br>PS:50 4B 03 04：这是头文件标记（0x04034b50）</p>
-<p>全局方式位标记的四个数字中只有第二个数字对其有影响，其它的不管为何值，都不影响它的加密属性！<br>第二个数字为奇数时 –&gt;加密<br>第二个数字为偶数时 –&gt;未加密</p>
-<p>伪加密<br>压缩源文件数据区的全局加密应当为00 00<br>且压缩源文件目录区的全局方式位标记应当为09 00</p>
-<p>真加密<br>压缩源文件数据区的全局加密应当为09 00<br>且压缩源文件目录区的全局方式位标记应当为09 00</p>
-<h2 id="萌新区-杂项7"><a href="#萌新区-杂项7" class="headerlink" title="萌新区 杂项7"></a>萌新区 杂项7</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/7.1.png"><br>感觉是改宽高的题<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/7.2.png"><br>确实是改宽高的题   我觉得这种题过不了正规比赛的审（单纯指图片）<br>找到图片的src，然后进行爆破  src跟在宽高后面<br>怎么知道宽高在哪儿？一个很朴素的办法就是先看图片的属性 然后转十六进制 就酱<br>你不得不承认这是种办法  只不过听了有种想打我的冲突而已23333<br>最最原始且朴素的找宽高的办法哈哈哈哈<br>反正正常做法都清楚 我就不写了<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/7.3.png"><br>然后改一下就行了  细节不展示了<br>最后，贴一下爆破宽高的脚本：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import struct</span><br><span class="line">import binascii</span><br><span class="line">import os</span><br><span class="line"> </span><br><span class="line">m &#x3D; open(&quot;flag.png&quot;,&quot;rb&quot;).read()</span><br><span class="line">k&#x3D;0</span><br><span class="line">for i in range(5000):</span><br><span class="line">    if k&#x3D;&#x3D;1:</span><br><span class="line">        break</span><br><span class="line">    for j in range(5000):</span><br><span class="line">        c &#x3D; m[12:16] + struct.pack(&#39;&gt;i&#39;, i) + struct.pack(&#39;&gt;i&#39;, j)+m[24:29]</span><br><span class="line">        crc &#x3D; binascii.crc32(c) &amp; 0xffffffff</span><br><span class="line">        if crc &#x3D;&#x3D; 0x889c2f07:</span><br><span class="line">            k &#x3D; 1</span><br><span class="line">            print(hex(i),hex(j))</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
-<h2 id="萌新区-杂项8"><a href="#萌新区-杂项8" class="headerlink" title="萌新区 杂项8"></a>萌新区 杂项8</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/8.1.png"><br>是这样的，题做出来了 跟杂项7是一样的<br>但是我懒得写笔记了 所以这里应付一下（）<br>就跟杂项7的做法一样，上脚本爆破<br>只需要改一下crc就行了 灰常简单~<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/8.2.png"></p>
-<h2 id="萌新区-杂项9"><a href="#萌新区-杂项9" class="headerlink" title="萌新区 杂项9"></a>萌新区 杂项9</h2><p>爷不会</p>
-<h2 id="萌新区-杂项10"><a href="#萌新区-杂项10" class="headerlink" title="萌新区 杂项10"></a>萌新区 杂项10</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/10.1.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/10.2.png"><br>看不出来所以然 看了眼题目摘了眼镜 有点懵逼<br>猜了一下好像是我好喜欢你<br>做题方法：缩小图片并摘下眼镜  (#^.^#)眼快瞎了嗷</p>
-<h2 id="萌新区-杂项11"><a href="#萌新区-杂项11" class="headerlink" title="萌新区 杂项11"></a>萌新区 杂项11</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.1.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.2.png"><br>上传文件之后点seek 密码为空直接点OK打开后发现是一个二维码<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.3.png"><br>是这样的，我扫了一下，然后出来了大吉大利杯的宣传视频，然后末尾还有个这么个东西……<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.4.png"><br>我……  好吧  我先去找一圈wp<br>大佬用的是QR_Research<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.5.png"><br>接下来来base64解码即可<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.6.png"><br>又是被flag笑到的一天</p>
-<hr>
-<blockquote>
-<p>只要心还透明，就能折射希望。</p>
-</blockquote>
-<hr>
-]]></content>
-      <categories>
-        <category>CTFshow刷题合集</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在Centos7上搭建LAMP</title>
     <url>/2021/02/26/%E5%9C%A8Centos7%E4%B8%8A%E6%90%AD%E5%BB%BALAMP/</url>
     <content><![CDATA[<h2 id="安装LANMP"><a href="#安装LANMP" class="headerlink" title="安装LANMP"></a>安装LANMP</h2><p>其实一开始想按照《Web安全攻防》在kali上搭建的，但是书上给的操作过于简单，实际在用kali搭建的时候问题特别多。因此，我改用Centos7进行搭建。<br>之前在kali上搭建花了特别多的时间和精力但是还是差了一点。在Centos7上搭建非常顺利。</p>
@@ -143,6 +109,40 @@
       </tags>
   </entry>
   <entry>
+    <title>CTFshow 萌新区杂项1-11</title>
+    <url>/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/</url>
+    <content><![CDATA[<p>CTFshow刷题合集之萌新杂项~</p>
+<h2 id="萌新区-杂项1"><a href="#萌新区-杂项1" class="headerlink" title="萌新区 杂项1"></a>萌新区 杂项1</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.1.png"></p>
+<a id="more"></a>
+<p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/1.2.png"><br>hint直接给答案可还行</p>
+<h2 id="萌新区-杂项2"><a href="#萌新区-杂项2" class="headerlink" title="萌新区 杂项2"></a>萌新区 杂项2</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/2.1.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/2.2.png"><br>没啥好讲的 记事本看也行</p>
+<h2 id="萌新区-杂项3"><a href="#萌新区-杂项3" class="headerlink" title="萌新区 杂项3"></a>萌新区 杂项3</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/3.1.png"><br>信息就那么几个：97 10 01 15<br>银行卡密码6位数 试几次就行了<br>密码为 971015</p>
+<h2 id="萌新区-杂项4"><a href="#萌新区-杂项4" class="headerlink" title="萌新区 杂项4"></a>萌新区 杂项4</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/4.1.png"><br>给的信息够多了 直接生成个字典暴力破解就行</p>
+<h2 id="萌新区-杂项5"><a href="#萌新区-杂项5" class="headerlink" title="萌新区 杂项5"></a>萌新区 杂项5</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/5.1.png"><br>乍一看没什么头脑（这种情况也就刚拿到题目一分钟左右）<br>很快就可以发现大写分布是不规律的 尤其是country的o是个0（数字）<br>我们把大写的字母一个一个挑出来 就会发现是答案<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/5.2.png"><br>flag{ctfshownb} 没什么难度，抖机灵的题</p>
+<h2 id="萌新区-杂项6"><a href="#萌新区-杂项6" class="headerlink" title="萌新区 杂项6"></a>萌新区 杂项6</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.1.png"><br>很明了，考察的是伪加密<br>先查找50 4B 01 02<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.2.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.3.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.4.png"><br>改过之后即可解压成功<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/6.5.png"><br>PS:50 4B 03 04：这是头文件标记（0x04034b50）</p>
+<p>全局方式位标记的四个数字中只有第二个数字对其有影响，其它的不管为何值，都不影响它的加密属性！<br>第二个数字为奇数时 –&gt;加密<br>第二个数字为偶数时 –&gt;未加密</p>
+<p>伪加密<br>压缩源文件数据区的全局加密应当为00 00<br>且压缩源文件目录区的全局方式位标记应当为09 00</p>
+<p>真加密<br>压缩源文件数据区的全局加密应当为09 00<br>且压缩源文件目录区的全局方式位标记应当为09 00</p>
+<h2 id="萌新区-杂项7"><a href="#萌新区-杂项7" class="headerlink" title="萌新区 杂项7"></a>萌新区 杂项7</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/7.1.png"><br>感觉是改宽高的题<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/7.2.png"><br>确实是改宽高的题   我觉得这种题过不了正规比赛的审（单纯指图片）<br>找到图片的src，然后进行爆破  src跟在宽高后面<br>怎么知道宽高在哪儿？一个很朴素的办法就是先看图片的属性 然后转十六进制 就酱<br>你不得不承认这是种办法  只不过听了有种想打我的冲突而已23333<br>最最原始且朴素的找宽高的办法哈哈哈哈<br>反正正常做法都清楚 我就不写了<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/7.3.png"><br>然后改一下就行了  细节不展示了<br>最后，贴一下爆破宽高的脚本：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import struct</span><br><span class="line">import binascii</span><br><span class="line">import os</span><br><span class="line"> </span><br><span class="line">m &#x3D; open(&quot;flag.png&quot;,&quot;rb&quot;).read()</span><br><span class="line">k&#x3D;0</span><br><span class="line">for i in range(5000):</span><br><span class="line">    if k&#x3D;&#x3D;1:</span><br><span class="line">        break</span><br><span class="line">    for j in range(5000):</span><br><span class="line">        c &#x3D; m[12:16] + struct.pack(&#39;&gt;i&#39;, i) + struct.pack(&#39;&gt;i&#39;, j)+m[24:29]</span><br><span class="line">        crc &#x3D; binascii.crc32(c) &amp; 0xffffffff</span><br><span class="line">        if crc &#x3D;&#x3D; 0x889c2f07:</span><br><span class="line">            k &#x3D; 1</span><br><span class="line">            print(hex(i),hex(j))</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+<h2 id="萌新区-杂项8"><a href="#萌新区-杂项8" class="headerlink" title="萌新区 杂项8"></a>萌新区 杂项8</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/8.1.png"><br>是这样的，题做出来了 跟杂项7是一样的<br>但是我懒得写笔记了 所以这里应付一下（）<br>就跟杂项7的做法一样，上脚本爆破<br>只需要改一下crc就行了 灰常简单~<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/8.2.png"></p>
+<h2 id="萌新区-杂项9"><a href="#萌新区-杂项9" class="headerlink" title="萌新区 杂项9"></a>萌新区 杂项9</h2><p>爷不会</p>
+<h2 id="萌新区-杂项10"><a href="#萌新区-杂项10" class="headerlink" title="萌新区 杂项10"></a>萌新区 杂项10</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/10.1.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/10.2.png"><br>看不出来所以然 看了眼题目摘了眼镜 有点懵逼<br>猜了一下好像是我好喜欢你<br>做题方法：缩小图片并摘下眼镜  (#^.^#)眼快瞎了嗷</p>
+<h2 id="萌新区-杂项11"><a href="#萌新区-杂项11" class="headerlink" title="萌新区 杂项11"></a>萌新区 杂项11</h2><p><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.1.png"><br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.2.png"><br>上传文件之后点seek 密码为空直接点OK打开后发现是一个二维码<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.3.png"><br>是这样的，我扫了一下，然后出来了大吉大利杯的宣传视频，然后末尾还有个这么个东西……<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.4.png"><br>我……  好吧  我先去找一圈wp<br>大佬用的是QR_Research<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.5.png"><br>接下来来base64解码即可<br><img src="/2021/01/12/CTFshow-%E8%90%8C%E6%96%B0%E5%8C%BA%E6%9D%82%E9%A1%B91-11/11.6.png"><br>又是被flag笑到的一天</p>
+<hr>
+<blockquote>
+<p>只要心还透明，就能折射希望。</p>
+</blockquote>
+<hr>
+]]></content>
+      <categories>
+        <category>CTFshow刷题合集</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CTFshow萌新区密码+隐写</title>
     <url>/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/</url>
     <content><![CDATA[<h2 id="萌新区-密码1"><a href="#萌新区-密码1" class="headerlink" title="萌新区 密码1"></a>萌新区 密码1</h2><p><img src="/2021/01/14/%E8%90%8C%E6%96%B0%E5%8C%BA%E5%AF%86%E7%A0%81-%E9%9A%90%E5%86%99/1.1.png"><br>密文一看就是十六进制，先将十六进制转换为字符串<br>结果如下所示</p>
@@ -176,5 +176,10 @@
       <tags>
         <tag>CTF</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>真的吗，我不信</title>
+    <url>/2021/03/01/%E7%9C%9F%E7%9A%84%E5%90%97%EF%BC%8C%E6%88%91%E4%B8%8D%E4%BF%A1/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
