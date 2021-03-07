@@ -5,20 +5,27 @@
     <url>/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/</url>
     <content><![CDATA[<h2 id="信息搜集-Web1"><a href="#信息搜集-Web1" class="headerlink" title="信息搜集 Web1"></a>信息搜集 Web1</h2><p><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/1.0.png"></p>
 <blockquote>
-<p>开发注释未及时删除<br>直接F12查看源码即可得到flag，懒得详说了</p>
+<p>知识点：开发注释未及时删除 </p>
 </blockquote>
+<p>直接F12查看源码即可得到flag，懒得详说了</p>
 <a id="more"></a>
 <p><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/1.1.png"></p>
-<blockquote>
-<p>js前台拦截</p>
+<h2 id="信息搜集-Web2"><a href="#信息搜集-Web2" class="headerlink" title="信息搜集 Web2"></a>信息搜集 Web2</h2><blockquote>
+<p>知识点：js前台拦截</p>
 </blockquote>
-<h2 id="信息搜集-Web2"><a href="#信息搜集-Web2" class="headerlink" title="信息搜集 Web2"></a>信息搜集 Web2</h2><p><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/2.1.png"><br>1 Ctrl+U<br>2 网址前面加上view-source:<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/2.3.png"><br>3 Ctrl+Shift+I<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/2.2.png"></p>
+<p><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/2.1.png"><br>1 Ctrl+U<br>2 网址前面加上view-source:<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/2.3.png"><br>3 Ctrl+Shift+I<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/2.2.png"></p>
 <h2 id="信息搜集-Web3"><a href="#信息搜集-Web3" class="headerlink" title="信息搜集 Web3"></a>信息搜集 Web3</h2><blockquote>
-<p>简单的burpsuite抓包，协议头泄露<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/3.1.png"></p>
+<p>知识点：简单的burpsuite抓包，协议头泄露<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/3.1.png"></p>
 </blockquote>
 <h2 id="信息搜集-Web4"><a href="#信息搜集-Web4" class="headerlink" title="信息搜集 Web4"></a>信息搜集 Web4</h2><blockquote>
-<p>考点是robots.txt文件，直接访问url/robots.txt<br>打开下载的文件即可获取flag<br>信息搜集 Web5<br>信息搜集 Web6<br>信息搜集 Web7<br>信息搜集 Web8<br>信息搜集 Web9<br>信息搜集 Web10<br>信息搜集 Web11<br>信息搜集 Web12</p>
+<p>知识点：robots.txt文件</p>
 </blockquote>
+<p>直接访问url/robots.txt<br>打开下载的文件即可获取flag<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/4.1.png"></p>
+<h2 id="信息搜集-Web5"><a href="#信息搜集-Web5" class="headerlink" title="信息搜集 Web5"></a>信息搜集 Web5</h2><h2 id="信息搜集-Web6"><a href="#信息搜集-Web6" class="headerlink" title="信息搜集 Web6"></a>信息搜集 Web6</h2><h2 id="信息搜集-Web7"><a href="#信息搜集-Web7" class="headerlink" title="信息搜集 Web7"></a>信息搜集 Web7</h2><h2 id="信息搜集-Web8"><a href="#信息搜集-Web8" class="headerlink" title="信息搜集 Web8"></a>信息搜集 Web8</h2><h2 id="信息搜集-Web9"><a href="#信息搜集-Web9" class="headerlink" title="信息搜集 Web9"></a>信息搜集 Web9</h2><h2 id="信息搜集-Web10"><a href="#信息搜集-Web10" class="headerlink" title="信息搜集 Web10"></a>信息搜集 Web10</h2><h2 id="信息搜集-Web11"><a href="#信息搜集-Web11" class="headerlink" title="信息搜集 Web11"></a>信息搜集 Web11</h2><h2 id="信息搜集-Web12"><a href="#信息搜集-Web12" class="headerlink" title="信息搜集 Web12"></a>信息搜集 Web12</h2><h2 id="信息搜集-Web13"><a href="#信息搜集-Web13" class="headerlink" title="信息搜集 Web13"></a>信息搜集 Web13</h2><h2 id="信息搜集-Web14"><a href="#信息搜集-Web14" class="headerlink" title="信息搜集 Web14"></a>信息搜集 Web14</h2><h2 id="信息搜集-Web15"><a href="#信息搜集-Web15" class="headerlink" title="信息搜集 Web15"></a>信息搜集 Web15</h2><h2 id="信息搜集-Web16"><a href="#信息搜集-Web16" class="headerlink" title="信息搜集 Web16"></a>信息搜集 Web16</h2><h2 id="信息搜集-Web17"><a href="#信息搜集-Web17" class="headerlink" title="信息搜集 Web17"></a>信息搜集 Web17</h2><h2 id="信息搜集-Web18"><a href="#信息搜集-Web18" class="headerlink" title="信息搜集 Web18"></a>信息搜集 Web18</h2><h2 id="信息搜集-Web19"><a href="#信息搜集-Web19" class="headerlink" title="信息搜集 Web19"></a>信息搜集 Web19</h2><h2 id="信息搜集-Web20"><a href="#信息搜集-Web20" class="headerlink" title="信息搜集 Web20"></a>信息搜集 Web20</h2><hr>
+<blockquote>
+<p>自能生羽翼，何必仰云梯</p>
+</blockquote>
+<hr>
 ]]></content>
       <categories>
         <category>CTFshow刷题合集</category>
