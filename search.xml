@@ -5,7 +5,12 @@
     <url>/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/</url>
     <content><![CDATA[<h2 id="信息搜集-Web1"><a href="#信息搜集-Web1" class="headerlink" title="信息搜集 Web1"></a>信息搜集 Web1</h2><p><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/1.0.png"></p>
 <blockquote>
-<p>开发注释未及时删除<br>直接F12查看源码即可得到flag，懒得详说了<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/1.1.png"><br>js前台拦截</p>
+<p>开发注释未及时删除<br>直接F12查看源码即可得到flag，懒得详说了</p>
+</blockquote>
+<a id="more"></a>
+<p><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/1.1.png"></p>
+<blockquote>
+<p>js前台拦截</p>
 </blockquote>
 <h2 id="信息搜集-Web2"><a href="#信息搜集-Web2" class="headerlink" title="信息搜集 Web2"></a>信息搜集 Web2</h2><p><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/2.1.png"><br>1 Ctrl+U<br>2 网址前面加上view-source:<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/2.3.png"><br>3 Ctrl+Shift+I<br><img src="/2021/03/07/CTFshow-Web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%861-20/2.2.png"></p>
 <h2 id="信息搜集-Web3"><a href="#信息搜集-Web3" class="headerlink" title="信息搜集 Web3"></a>信息搜集 Web3</h2><blockquote>
